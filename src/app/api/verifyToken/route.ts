@@ -14,7 +14,7 @@ export async function POST(request: NextRequest){
         const {token} = reqBody
         console.log(token);
 
-        const user = await User.findOne({forgotPasswordToken: token, verifyTokforgotPasswordTokenExpiryenExpiry: {$gt: Date.now()}});
+        const user = await User.findOne({forgotPasswordToken: token, forgotPasswordTokenExpiry: {$gt: Date.now()}});
 
         if (!user) {
             return NextResponse.json({error: "Invalid token"}, {status: 400})

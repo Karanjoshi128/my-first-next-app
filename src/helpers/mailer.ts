@@ -20,6 +20,7 @@ export async function sendEmail({ email, emailType, userId }: any) {
         forgotPasswordTokenExpiry: Date.now() + 360000,
       });
     }
+    
     //create a transporter
 
     const transport = nodemailer.createTransport({
@@ -49,3 +50,9 @@ export async function sendEmail({ email, emailType, userId }: any) {
 }
 
 
+// else if (emailType === "FORGOT_PASSWORD") {
+//   await User.findOneAndUpdate({ email }, {
+//     forgotPasswordToken: hashedToken,
+//     forgotPasswordTokenExpiry: Date.now() + 360000,
+//   })
+// }

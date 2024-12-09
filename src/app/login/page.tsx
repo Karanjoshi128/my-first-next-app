@@ -19,11 +19,11 @@ const page = () => {
 
     const onLogin = async () => {
       try {
-        console.log(user);
+        // console.log(user);
         
         const response = await axios.post("api/users/login", user);
         if(response){
-          console.log(response.data);
+          // console.log(response.data);
           router.push('/profile');
           
         }
@@ -33,6 +33,16 @@ const page = () => {
         
       }
 
+    }
+
+    const handleForgotPassword = async () => {
+      try {
+        router.push('/provideCredentials');
+        
+      } catch (error : any) {
+        console.log(error.response.data)
+        
+      }
     }
 
 
@@ -60,6 +70,7 @@ const page = () => {
             <Link href='/signup' className='text-center'>
             SignUp
             </Link>
+            <button type="button" onClick={handleForgotPassword}>Forgot password</button>
         </div>
 
       

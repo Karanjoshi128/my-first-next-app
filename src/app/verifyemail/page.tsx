@@ -2,23 +2,39 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const mailverify = () => {
 
   const router = useRouter();
-
-
-
-
-
   const [token, setToken] = useState("");
+
+
   useEffect(() => {
     const urlToken = window.location.search.split("=")[1];
     setToken(urlToken || "");
   }, []);
 
   const redirectToChangePassword = async () => {
-    router.push("/changeCredentials");
+    const response = await axios.post("api/verifyToken", { token }); 
+    if(response){
+      // console.log(response.data);
+      router.push("/changeCredentials");
+    }
+    else{
+      router.push("/login");
+    }
+  }
+
+  const redirectToForgotPassword = async () => {
+    const response = await axios.post("api/verifyToken", { token }); 
+    if(response){
+      // console.log(response.data);
+      router.push("/passwordForget");
+    }
+    else{
+      router.push("/login");
+    }
   }
 
   return (
@@ -34,6 +50,12 @@ const mailverify = () => {
         onClick={redirectToChangePassword}
       >
         redirect To Change Password page
+      </button>
+     <button
+        className="bg-blue-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded"
+        onClick={redirectToForgotPassword}
+      >
+        redirect To Forgot Password page
       </button>
     </div>
   );

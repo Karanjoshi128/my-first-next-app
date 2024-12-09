@@ -16,10 +16,10 @@ const profilePage = () => {
 
   const handleLogout = async () => {
     try {
-      console.log("Logout clicked");
+      // console.log("Logout clicked");
       const response = await axios.post("api/users/logout");
       if (response) {
-        console.log(response.data);
+        // console.log(response.data);
         router.push("/login");
       }
     } catch (error: any) {
@@ -33,7 +33,7 @@ const profilePage = () => {
     try {
       const response = await axios.post("api/users/verifyMail", {userId : userInfo.id} );
       if(response){
-        console.log(response.data);
+        // console.log(response.data);
         router.push("/changePassword");
       }
       
@@ -46,7 +46,7 @@ const profilePage = () => {
 
   const getUserDetails = async () => {
     const response = await axios.get('/api/users/me')
-    console.log(response.data);
+    // console.log(response.data);
     setUserInfo(prevState => ({ ...prevState, email: response.data.data.email, username: response.data.data.username , id: response.data.data._id}));
 }
 

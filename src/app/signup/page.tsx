@@ -21,11 +21,11 @@ const page = () => {
 
     const onSignUp = async () => {
       try {
-        console.log(user);
+        // console.log(user);
         
         const response = await axios.post("api/users/signup", user);
         if(response){
-          console.log(response.data);
+          // console.log(response.data);
           router.push('/login');
         }
 
