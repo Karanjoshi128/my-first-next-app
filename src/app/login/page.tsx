@@ -45,14 +45,14 @@ const page = () => {
             <input 
             type='email' 
             placeholder='Email' 
-            className='border border-gray-300 p-2 rounded mb-2' 
+            className='border border-gray-300 p-2 rounded mb-2 text-black' 
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
             <input 
             type='password' 
             placeholder='Password' 
-            className='border border-gray-300 p-2 rounded mb-2' 
+            className='border border-gray-300 p-2 rounded mb-2 text-black' 
             value={user.password}
             onChange={(e) => setUser({ ...user, password: e.target.value })}
             />

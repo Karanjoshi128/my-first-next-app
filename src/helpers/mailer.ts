@@ -3,7 +3,7 @@ import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
 import 'dotenv/config'
 
-export async function sendMail({ email, emailType, userId }: any) {
+export async function sendEmail({ email, emailType, userId }: any) {
   try {
     //create a hashed token
 
@@ -36,7 +36,7 @@ export async function sendMail({ email, emailType, userId }: any) {
         from : "joshikaran.aad.0007@gmail.com",
         to :  email,
         subject : emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-        html : `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}</p>`
+        html : `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"} or copy the url and paste in the browser - ${process.env.DOMAIN}/verifyemail?token=${hashedToken}</p>`
 
     }
 
@@ -47,3 +47,5 @@ export async function sendMail({ email, emailType, userId }: any) {
     throw new Error(error.message);
   }
 }
+
+
